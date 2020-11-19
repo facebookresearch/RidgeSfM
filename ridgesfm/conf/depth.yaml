@@ -1,0 +1,23 @@
+n_batch: 48
+n_views: 1
+n_multipred: 32
+multipred_scale_loss: False
+unet:
+  depth: 2
+  m: 32
+  join: 'concat'
+  ssp: 'tailored'
+  hs: True
+  t: 4
+  noise: 0.3
+optim:
+  o: 'adam'
+  lr: 1e-3
+  wd: 0
+ppl: False
+
+lambda_multipred: 1
+device: 'cuda:0'
+hydra:
+  run:
+    dir: weights/

@@ -1,0 +1,3 @@
+- Download the [ScanNet dataset](http://www.scan-net.org/) to `ridgesfm/data/scannet_sens/[train|test]/`
+- Download [SensReader](https://github.com/ScanNet/ScanNet/tree/master/SensReader/python)
+- Run `bash prepare_scannet.sh` in `ridgesfm/data/`

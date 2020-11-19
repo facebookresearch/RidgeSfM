@@ -1,0 +1,35 @@
+scenes: data/scannet/test_scenes/
+
+scene:
+  frameskip: 10
+  n: 1
+
+unet:
+  depth: 2
+  m: 32
+  join: 'concat'
+  ssp: 'tailored'
+  hs: True
+  t: 4
+  resize: 240
+  name: weights/net.pth
+n_multipred: 32
+n_multipred2: 32
+lmbda: 1
+precision: 0.1
+
+depth_change_filter_features: x
+background_filter_features: xx
+matching: kcrosscheck_1
+contiguous_matching: kcrosscheck_3
+sift_features: False
+orb_features: False
+superpoint_features: True
+max_distance_filter_features: 5
+device: 'cuda:0'
+prematch_multiplier: 10
+outdir: .
+
+hydra:
+  run:
+    dir: .
