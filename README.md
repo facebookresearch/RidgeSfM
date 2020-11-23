@@ -4,7 +4,7 @@ _3DV 2020_
 
 This is the official implementation of **RidgeSfM: Structure from Motion via Robust Pairwise Matching Under Depth Uncertainty** in PyTorch.
 
-[Link to paper](ridge_sfm.pdf)
+[Link to paper](https://arxiv.org/abs/2011.10359)
 
 <a href="output/scannet/" rel="some text"><img src="output/scannet/0708/scene1_frameskip3.gif" width="320" alt="ScanNet reconstruction" /></a>
 
