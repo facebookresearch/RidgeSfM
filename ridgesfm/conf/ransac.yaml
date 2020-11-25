@@ -2,7 +2,7 @@ scenes: data/scannet/test_scenes/
 
 scene:
   frameskip: 10
-  n: 1
+  n: 0
 
 unet:
   depth: 2

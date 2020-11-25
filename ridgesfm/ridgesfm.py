@@ -4,39 +4,14 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
-import json
-import time
-import math
-import sklearn.metrics
-import sklearn.cluster
-import faiss
-import matplotlib.pyplot as plt
-import torchvision.transforms.functional as TTF
-import glob
-import importlib
-import sklearn.mixture
-import numpy as np
-import torchvision
-import torch.utils.data
-import torch.nn.functional as F
-import random
-import collections
-import scipy.cluster.vq
 import utils
-import PIL.Image
 import torch
-import os
 import eval_scannet
-import multiprocessing
-import visdom
-import cv2
+import multiprocessing.pool
 from tqdm import tqdm
-from mpl_toolkits.mplot3d import Axes3D
 import logging
 import hydra
 import os
-import sys
-import yaml
 os.environ['MKL_THREADING_LAYER'] = 'GNU'
 os.environ['TORCH_USE_RTLD_GLOBAL'] = 'YES'
 log = logging.getLogger(__name__)
@@ -120,8 +95,9 @@ def my_app(cfg):
         frame_rate={1: 24, 3: 8, 10: 3, 30: 1}[cfg.scene.frameskip],
         cam_skip={1: 10, 3: 3, 10: 1, 30: 1}[cfg.scene.frameskip],
         device=cfg.device)
-    out_file = eval_scannet.get_dumpfile(cfg.outdir, s['file_name'])
-    scene.pose(out_file)
+    if 'depth' in s:
+        out_file = eval_scannet.get_dumpfile(cfg.outdir, s['file_name'])
+        scene.pose(out_file)
 
 
 if __name__ == "__main__":

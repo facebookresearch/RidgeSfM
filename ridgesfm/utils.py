@@ -1558,7 +1558,7 @@ def load_scene(cfg, NET):
     s['color_fltr'] = s['color_fltr'].view(-1, s['H'] * s['W'])
     if cfg.sift_features:
         s['features'].append('sift')
-        cv2_sift = cv2.xfeatures2d.SIFT_create(
+        cv2_sift = cv2.SIFT_create(
             contrastThreshold=0.02, edgeThreshold=20)
         for img, cf in tqdm(zip(s['imgs'], s['color_fltr']),
                             desc='calculating sift features'):
@@ -1764,4 +1764,6 @@ def prematch_scene(cfg, s,thread_pool):
             (s['feature_screen_xy'][e[1]][mm[:, 1]]).numpy(),
             cv2.LMEDS, 5)[1])[0])
         s['matches'][e]=mm[fltr]
-    list(tqdm(thread_pool.imap_unordered(match, edges),desc='FAISS matching'))
+    #list(tqdm(thread_pool.imap_unordered(match, edges),desc='FAISS matching'))
+    for e in tqdm(edges,desc='FAISS matching'):
+        match(e)

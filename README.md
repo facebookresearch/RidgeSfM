@@ -1,10 +1,10 @@
 # RidgeSfM: Structure from Motion via Robust Pairwise Matching Under Depth Uncertainty
 _Benjamin Graham, David Novotny_<br/>
-_3DV 2020_
+[3DV 2020](http://3dv2020.dgcv.nii.ac.jp/)
 
 This is the official implementation of **RidgeSfM: Structure from Motion via Robust Pairwise Matching Under Depth Uncertainty** in PyTorch.
 
-[Link to paper](https://arxiv.org/abs/2011.10359)
+[Link to paper](https://arxiv.org/abs/2011.10359) | [Poster](ridgesfm_poster.pdf)
 
 <a href="output/scannet/" rel="some text"><img src="output/scannet/0708/scene1_frameskip3.gif" width="320" alt="ScanNet reconstruction" /></a>
 
@@ -100,17 +100,22 @@ wget https://github.com/magicleap/SuperGluePretrainedNetwork/blob/master/models/
 wget https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/master/models/superpoint.py -O ridgesfm/superpoint.py
 ```
 - Run `bash prepare_scannet.sh` in `ridgesfm/data/`
-- Run `python ridgesfm.py`
+- Run `python ridgesfm.py scene.n=0 scene.frameskip=10`
+
+Try process your own video,
+- calibrate your camera using `calibrate/calibrate.ipynb`
+- then run `python ridgesfm.py scenes=calibrate/ scene.n=0 scene.frameskip=10`
+<a/>
+Videos are scaled and/or cropped to resoltion 640x480. The notebook calculates a camera intrinsic matrix for the rescaled video. RidgeSfM will work best when the C.I. matrix is similar to that of the depth prediction network's training data, i.e. [[578, 0, 319.5], [0, 578, 239.5], [0, 0, 1]].
 
 ## Dependencies:
 - Python 3.7+
-- PyTorch 1.5+ and TorchVision
-- [PyTorch3D](https://github.com/facebookresearch/pytorch3d)
+- PyTorch and TorchVision
 - [Faiss](https://github.com/facebookresearch/faiss)
 - [PyKeOps](https://pypi.org/project/pykeops/)
 - OpenCV
-- NumPy
-
+- imageio and imageio-ffmpeg
+- [PyTorch3D](https://github.com/facebookresearch/pytorch3d)
 
 ## License
 RidgeSfM is CC-BY-NC licensed, as found in the LICENSE file. [Terms of use](https://opensource.facebook.com/legal/terms). [Privacy](https://opensource.facebook.com/legal/privacy)
@@ -120,10 +125,10 @@ RidgeSfM is CC-BY-NC licensed, as found in the LICENSE file. [Terms of use](http
 If you find this code useful in your research then please cite:
 
 ```
-@article{ridgesfm2020,
-  title={RidgeSfM: Structure from Motion via Robust Pairwise Matching Under Depth Uncertainty},
-  author={Benjamin Graham and David Novotny},
-  journal={3DV},
-  year={2020}
+@InProceedings{ridgesfm2020,
+    author       = "Benjamin Graham and David Novotny",
+    title        = "Ridge{S}f{M}: Structure from Motion via Robust Pairwise Matching Under Depth Uncertainty",
+    booktitle    = "International Conference on 3D Vision (3DV)",
+    year         = "2020",
 }
 ```
