@@ -1500,12 +1500,13 @@ def load_scene(cfg, NET):
         x = NET(x)
         a = x[:, 1:]
         b = x[:, :1].clamp(min=0.3)
-        s['p_depth0'].append(b.mean(1, keepdim=True).cpu())
-        a = a.view(a.size(0), -1, s['H'] * s['W']).permute(0, 2, 1)
-        U, S, V = torch.svd(a)
-        a = (U * S[:, None, :])
-        a = a.view(a.size(0), s['H'], s['W'], -1).permute(0, 3, 1, 2)
-        a = a[:, :cfg.n_multipred2]
+        s['p_depth0'].append(b.cpu())
+        if cfg.n_multipred2<cfg.n_multipred:
+            a = a.view(a.size(0), -1, s['H'] * s['W']).permute(0, 2, 1)
+            U, S, V = torch.svd(a)
+            a = (U * S[:, None, :])
+            a = a.view(a.size(0), s['H'], s['W'], -1).permute(0, 3, 1, 2)
+            a = a[:, :cfg.n_multipred2]
         s['p_depth'].append(a.cpu())
     s['p_depth'] = torch.cat(s['p_depth'], 0)
     s['p_depth0'] = torch.cat(s['p_depth0'], 0)
