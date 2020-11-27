@@ -27,7 +27,7 @@ To simplify the point-cloud, we use K-Means to extract 1,000,000 centroids.
   </tr>
   <tr>
   <td colspan="2">
-<a href="https://drive.google.com/file/d/1HPykqfiZYo0df1XJd73JDJ187hGqDIUz/view" title="RidgeSfm - KIITI VO scene 6 frameskip k=3"><img src="scene6_frameskip3.jpg" alt="RidgeSfm - KITTI VO scene 6 frameskip k=3" /></a>
+<a href="https://drive.google.com/file/d/1HPykqfiZYo0df1XJd73JDJ187hGqDIUz/view?usp=sharing" title="RidgeSfm - KIITI VO scene 6 frameskip k=3"><img src="scene6_frameskip3.jpg" alt="RidgeSfm - KITTI VO scene 6 frameskip k=3" /></a>
 </td>
   </tr>
 </tbody>

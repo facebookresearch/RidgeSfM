@@ -23,7 +23,7 @@ To simplify the point-cloud, we use K-Means to extract 100,000 centroids.
   </tr>
   <tr>
   <td colspan="2">
-<a href="https://drive.google.com/file/d/17SwF9eCGoEYnCb8_elbzjDCG6Ks6A_Jx/view" title="RidgeSfm - ScanNet scene 0708 frameskip k=3"><img src="scene1_frameskip3.jpg" alt="RidgeSfm - ScanNet scene 0708 frameskip k=3" /></a>
+<a href="https://drive.google.com/file/d/17SwF9eCGoEYnCb8_elbzjDCG6Ks6A_Jx/view?usp=sharing" title="RidgeSfm - ScanNet scene 0708 frameskip k=3"><img src="scene1_frameskip3.jpg" alt="RidgeSfm - ScanNet scene 0708 frameskip k=3" /></a>
 </td>
   </tr>
 </tbody>
