@@ -92,17 +92,21 @@ We trained a depth prediction network on the [KITTI depth prediction](http://www
 
 # Setup
 
-- Download the [ScanNet dataset](http://www.scan-net.org/) to `ridgesfm/data/scannet_sens/[train|test]/`
-- Download [SensReader](https://github.com/ScanNet/ScanNet/tree/master/SensReader/python) to `ridgesfm/data`
 - Download [SuperPoint](https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w9/DeTone_SuperPoint_Self-Supervised_Interest_CVPR_2018_paper.pdf) to ridgesfm/
 ```
 wget https://github.com/magicleap/SuperGluePretrainedNetwork/blob/master/models/weights/superpoint_v1.pth?raw=true -O ridgesfm/weights/superpoint_v1.pth
 wget https://raw.githubusercontent.com/magicleap/SuperGluePretrainedNetwork/master/models/superpoint.py -O ridgesfm/superpoint.py
 ```
-- Run `bash prepare_scannet.sh` in `ridgesfm/data/`
-- Run `python ridgesfm.py scene.n=0 scene.frameskip=10`
+- To download one test scene:
+  - Download [scannet.zip](https://drive.google.com/file/d/1OP2IYrsbtP2gyEfXPIUAmkBTp-YWqRzS/view?usp=sharing) to RidgeSfM/ridgesfm/data and check that `RidgeSfM/ridgesfm/data/scannet/test_scenes/0707_00/seq=0707_00-maxframes=300-frameskip=10-start=1.pth` exists.
+  - Run `python ridgesfm.py scene.n=0 scene.frameskip=10`
+- To prepare the full ScanNet dataset:
+  - Download the [ScanNet dataset](http://www.scan-net.org/) to `ridgesfm/data/scannet_sens/[train|test]/`
+  - Download [SensReader](https://github.com/ScanNet/ScanNet/tree/master/SensReader/python) to `ridgesfm/data`
+  - Run `bash prepare_scannet.sh` in `ridgesfm/data/`
+  - Run `python ridgesfm.py scene.n=x scene.frameskip=y` with `x` = 0,1,...,98 or 99 and `y` = 1,3,10 or 30
 
-Try process your own video,
+# To process your own video
 - calibrate your camera using `calibrate/calibrate.ipynb`
 - then run `python ridgesfm.py scenes=calibrate/ scene.n=0 scene.frameskip=10`
 <a/>
