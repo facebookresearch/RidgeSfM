@@ -24,7 +24,7 @@ import hydra
 log = logging.getLogger(__name__)
 
 
-@hydra.main(config_path='conf/depth.yaml')
+@hydra.main(config_path="conf", config_name="depth")
 def my_app(cfg):
     log.info(f'{cfg}')
     log.info(f'Working directory : {os.getcwd()}')

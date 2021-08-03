@@ -17,7 +17,7 @@ os.environ['TORCH_USE_RTLD_GLOBAL'] = 'YES'
 log = logging.getLogger(__name__)
 
 
-@hydra.main(config_name='conf/ransac.yaml')
+@hydra.main(config_path="conf", config_name="ransac")
 def my_app(cfg):
     thread_pool = multiprocessing.pool.ThreadPool()
     log.info(f'{cfg}')
